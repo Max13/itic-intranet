@@ -58,7 +58,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('trainings', TrainingController::class)->only(['index', 'show']);
 
     // Marking
-    Route::resource('marking.criteria', CriterionController::class);
+    Route::group([
+        'prefix' => '/marking',
+        'as' => 'marking/'
+    ], function () {
+        Route::resource('criteria', CriterionController::class);
+    });
     Route::resource('students.points', PointController::class)->shallow()->except(['show']);
 
     // Users

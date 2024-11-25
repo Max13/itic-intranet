@@ -10,6 +10,16 @@ use Illuminate\Validation\Rule;
 class CriterionController extends Controller
 {
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Criterion::class, 'criterion');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
